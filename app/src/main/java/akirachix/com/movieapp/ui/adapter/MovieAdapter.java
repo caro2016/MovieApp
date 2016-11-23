@@ -1,4 +1,4 @@
-package akirachix.com.movieapp.ui.adapter;
+ package akirachix.com.movieapp.ui.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
 
 import java.util.List;
 
@@ -52,6 +54,9 @@ public class MovieAdapter extends BaseAdapter {
         //create an instance of the movie object
         Movie movie = movieList.get(position);
         MovieTitle.setText(movie.getTitle());
+        Glide.with(context)
+                .load(movie.getPosterPath())
+                .into(moviePoster);
         return rootView;
     }
 }

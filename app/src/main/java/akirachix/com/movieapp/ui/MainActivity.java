@@ -1,6 +1,6 @@
  package akirachix.com.movieapp.ui;
 
-import android.app.ProgressDialog;
+ import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -86,9 +86,13 @@ public class MainActivity extends AppCompatActivity {
                             for (int i=0; i<jsonArray.length(); i++){
                                 JSONObject jsonMovieObject=jsonArray.getJSONObject(i);
                                 String movieTitle= jsonMovieObject.getString("title");
+                                String moviePosterPath=jsonMovieObject.getString("poster_path");
+                                //Image url
+                                String imageUrl=AppConstants.TMDB_IMAGE_URL + AppConstants.IMAGE_SIZE_500 + moviePosterPath;
                                 Log.i(LOG_TAG, "Movie Title" + movieTitle);
                                 Movie movie = new Movie();
                                 movie.setTitle(movieTitle);
+                                movie.setPosterPath(imageUrl);
 
                                 movieList.add(movie);
                             }
